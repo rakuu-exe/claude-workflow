@@ -1,0 +1,21 @@
+# DENY EVERYTHING BY DEFAULT.
+#
+# This directory holds .credentials.json, full session transcripts under
+# projects/, shell snapshots, and telemetry. None of that may ever be tracked.
+# Nothing is committed unless it is explicitly un-ignored below, so a new file
+# appearing in ~/.claude is untracked by default rather than by remembering.
+#
+# Before adding a "!" line, ask whether that path can ever contain a secret.
+# settings.json is deliberately NOT tracked: its `env` block is a common place
+# for API keys.
+
+*
+
+!.gitignore
+!README.md
+
+!agents/
+!agents/*.md
+
+!commands/
+!commands/*.md
