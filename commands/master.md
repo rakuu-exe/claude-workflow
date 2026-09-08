@@ -14,6 +14,8 @@ Run these in order with the Agent tool. Each stage gets the previous stage's ful
 
 **0 — Scope it yourself.** Before delegating, spend a moment on the request. If it is genuinely trivial (a one-line fix, a rename, a typo), skip the pipeline, do it directly, and say you skipped it. The pipeline is for work with real design or breakage risk. If the request is ambiguous in a way that would send the Planner down the wrong road, ask the user one question now — not five, and not later.
 
+**Choosing the middle stage.** Stage 2 is `implementer` when the task adds or changes behavior. When the task is purely structural — the code works and should keep working, but the shape is wrong — use `refactorer` instead, and tell it the behavior contract is absolute. Never run both on the same files in one pass: a diff that moves code *and* changes what it does is the diff nobody can review.
+
 **1 — `planner`.** Pass the task plus any constraints the user gave. Read the plan critically: are the file citations real, do the steps actually decompose the problem, are the acceptance criteria observable? A plan that cites files vaguely was written from assumption — send it back once with what is missing.
 
 **2 — `implementer`.** Pass the full plan, verbatim, plus the acceptance criteria. If the plan has more than about five steps or spans unrelated areas, split it across sequential implementer calls so each one stays focused — but never run two implementers in parallel on the same files. Check the report: did verification actually run, or is success being asserted? If deviations came back, decide whether they are acceptable before moving on.
