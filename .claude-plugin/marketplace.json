@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "rakuu-workflow",
+  "description": "Personal Claude Code workflow: a gated multi-agent build pipeline and the web-standards commands around it",
+  "owner": {
+    "name": "ragnarrand"
+  },
+  "plugins": [
+    {
+      "name": "claude-workflow",
+      "description": "A gated Planner -> Implementer/Refactorer -> Tester -> Reviewer pipeline, plus /scaffold, /debug and /launch-check",
+      "category": "workflow",
+      "source": "./",
+      "version": "1.0.0"
+    }
+  ]
+}

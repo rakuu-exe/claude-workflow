@@ -1,0 +1,8 @@
+{
+  "name": "claude-workflow",
+  "description": "A gated Planner -> Implementer/Refactorer -> Tester -> Reviewer pipeline, plus commands for scaffolding a project, debugging by root cause, and auditing it before launch",
+  "author": {
+    "name": "ragnarrand"
+  },
+  "version": "1.0.0"
+}

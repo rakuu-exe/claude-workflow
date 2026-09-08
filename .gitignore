@@ -19,3 +19,6 @@
 
 !commands/
 !commands/*.md
+
+!.claude-plugin/
+!.claude-plugin/*.json
