@@ -28,9 +28,11 @@ nobody can review.
 
 ## Skills
 
-Community skills, copied unchanged from upstream at a pinned commit. Sources, commits
-and licenses are in [`skills/THIRD_PARTY.md`](skills/THIRD_PARTY.md). Claude loads each
-one on its own when the task matches its description.
+Community skills, copied unchanged from upstream at a pinned commit, plus one of this
+repo's own. Sources, commits and licenses are in [`skills/THIRD_PARTY.md`](skills/THIRD_PARTY.md).
+Claude loads each one on its own when the task matches its description.
+
+### Engineering
 
 | Skill | Use it for | From |
 |---|---|---|
@@ -48,6 +50,37 @@ one on its own when the task matches its description.
 you type, and the skill is what Claude reaches for when a bug shows up mid-task.
 `/launch-check` audits once-per-project standards, and `security-audit` looks for
 vulnerabilities, so they don't replace each other.
+
+### Design and motion (Emil Kowalski)
+
+| Skill | Use it for |
+|---|---|
+| `emil-design-eng` | UI polish and the small details that make an interface feel right |
+| `animate`, `choreograph` | Building one animation, or several elements moving together |
+| `review-animations`, `improve-animations` | Reviewing motion code, or auditing a codebase's motion with a plan |
+| `find-animation-opportunities`, `remove-animations` | Finding where motion is missing, or where it should go |
+| `animation-performance`, `animation-vocabulary` | Keeping animations in the frame budget; naming a vaguely described effect |
+| `gestures`, `apple-design` | Drag, swipe and sheet interactions; spring physics and fluid motion |
+| `break-ui` | Stress-testing UI with worst-case data |
+| `prototype`, `pick-ui-library` | Several variants behind a live picker; choosing a library for a task |
+| `mobile-native`, `animate-expo`, `write-swift` | Web apps that feel native on phones; React Native/Expo motion; Swift |
+| `ask-sonner` | The Sonner toast library |
+
+### Project state
+
+| Skill | Use it for |
+|---|---|
+| `project-tracker` | Keeping `docs/PROJECT-TRACKER.md`, `docs/IMPLEMENTED.md` and `docs/HANDOFF.md` current, so the next person or agent can pick the project up cold |
+
+`project-tracker` is this repo's own skill. IDs are permanent and typed (`F` feature, `B` bug,
+`C` internal change), status is a separate column, and nothing is marked done without a
+verification that actually ran.
+
+### Installed alongside, not copied
+
+impeccable, taste-skill and Playwright MCP ship hooks, binaries or large assets and update
+often, so they're installed from their own sources. Commands are in
+[`skills/THIRD_PARTY.md`](skills/THIRD_PARTY.md#installed-separately-not-copied).
 
 ## Install
 
