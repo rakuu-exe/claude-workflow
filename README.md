@@ -1,7 +1,8 @@
 # Claude Code workflow
 
-A gated multi-agent build pipeline, the commands that surround it, and a set of vetted
-community skills. Installable as a plugin or by copying three directories.
+A gated multi-agent build pipeline, the commands that surround it, a set of vetted
+community skills, and the design plugins and MCP servers they work with. One plugin install
+sets up all of it.
 
 ## Commands
 
@@ -79,11 +80,13 @@ vulnerabilities, so they don't replace each other.
 `C` internal change), status is a separate column, and nothing is marked done without a
 verification that actually ran.
 
-### Installed alongside, not copied
+### Pulled in by the plugin
 
-impeccable, taste-skill and Playwright MCP ship hooks, binaries or large assets and update
-often, so they're installed from their own sources. Commands are in
-[`skills/THIRD_PARTY.md`](skills/THIRD_PARTY.md#installed-separately-not-copied).
+Installing the plugin also installs **impeccable** and **taste-skill** as dependencies,
+fetched from their own repos, and starts two MCP servers from `.mcp.json`: **Playwright**
+(a real browser) and **Knip** (unused files, exports and dependencies, used by
+`configure-knip`). Sources are in
+[`skills/THIRD_PARTY.md`](skills/THIRD_PARTY.md#pulled-in-by-the-plugin-not-copied).
 
 ## Install
 
@@ -94,7 +97,11 @@ As a plugin:
 /plugin install claude-workflow@rakuu-workflow
 ```
 
-Or by hand:
+That one install brings everything: the commands, agents and skills here, impeccable and
+taste-skill, and the Playwright and Knip MCP servers. It needs Node.js on `PATH` (for `npx`)
+and Chrome (for Playwright and taste-skill's checker).
+
+Or by hand, without the dependencies and MCP servers:
 
 ```sh
 git clone https://github.com/rakuu-exe/claude-workflow.git ~/claude-workflow
@@ -102,6 +109,10 @@ cp -r ~/claude-workflow/agents ~/claude-workflow/commands ~/claude-workflow/skil
 ```
 
 Restart Claude Code either way, so the commands and skills register.
+
+`claude plugin validate` reports the name `claude-workflow` as reserved, because it starts
+with `claude-`. Installing and loading still work. Renaming the plugin would change the
+install id and the `claude-workflow:` prefix on every skill.
 
 ## Where standards live
 
@@ -126,7 +137,7 @@ was knowingly skipped. That file belongs to the project, not to this repo.
 
 It lives inside `~/.claude`, which also holds credentials, session transcripts, and
 telemetry. `.gitignore` therefore denies everything by default and un-ignores only
-`agents/*.md`, `commands/*.md`, the plugin manifests, and each skill folder by name.
+`agents/*.md`, `commands/*.md`, the plugin manifests, `.mcp.json`, and each skill folder by name.
 Skills are listed one by one rather than as `skills/**`, because `~/.claude/skills/synced/`
 holds claude.ai's own synced skills and their manifest. `settings.json` is excluded on
 purpose — its `env` block is a common place for API keys.
