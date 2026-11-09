@@ -1,31 +1,31 @@
 # Claude Code workflow
 
-A gated multi-agent build pipeline, the commands that surround it, a set of vetted
-community skills, and the design plugins and MCP servers they work with. One plugin install
-sets up all of it.
+A Claude Code plugin: vetted community skills, one skill of my own, and the design plugins
+and MCP servers they work with. One install sets up all of it.
 
-## Commands
+## Install
 
-| Command | What it does |
-|---|---|
-| `/master <task>` | Runs the full pipeline, judging each stage before the next and recording the run |
-| `/scaffold <project>` | Starts a new project with the foundations already in — env config, error pages, page shell, `robots.txt` |
-| `/debug <symptom>` | Finds a root cause by reproducing and narrowing, rather than guessing at fixes |
-| `/launch-check` | Audits a project for the once-per-project standards that no single task owns |
+```
+/plugin marketplace add rakuu-exe/claude-workflow
+/plugin install claude-workflow@rakuu-workflow
+```
 
-## Agents
+That one install brings the skills below, impeccable and taste-skill, and the Playwright
+and Knip MCP servers. It needs Node.js on `PATH` (for `npx`) and Chrome (for Playwright and
+taste-skill's checker).
 
-| Agent | Role |
-|---|---|
-| `planner` | Designs the approach against the real code. Writes none of it. |
-| `implementer` | Executes the plan, stays in scope, reports deviations rather than forcing them |
-| `refactorer` | Changes structure while holding behavior constant, with characterization tests as the net |
-| `tester` | Tries to break it. Never edits production code to go green. |
-| `reviewer` | Explains the change first, then critiques it, ranked by severity |
+Or by hand, without the dependencies and MCP servers:
 
-`/master` routes to `implementer` when behavior changes and `refactorer` when it must not.
-Never both in one pass — a diff that moves code *and* changes what it does is the diff
-nobody can review.
+```sh
+git clone https://github.com/rakuu-exe/claude-workflow.git ~/claude-workflow
+cp -r ~/claude-workflow/skills ~/.claude/
+```
+
+Restart Claude Code either way, so the skills register.
+
+`claude plugin validate` reports the name `claude-workflow` as reserved, because it starts
+with `claude-`. Installing and loading still work. Renaming the plugin would change the
+install id and the `claude-workflow:` prefix on every skill.
 
 ## Skills
 
@@ -47,11 +47,6 @@ Claude loads each one on its own when the task matches its description.
 | `api-design-principles` | Designing or reviewing REST and GraphQL APIs | wshobson/agents |
 | `architecture-patterns` | Backend structure: layers, boundaries, dependency direction | wshobson/agents |
 
-`/debug` and `systematic-debugging` overlap on purpose. The command is the entry point
-you type, and the skill is what Claude reaches for when a bug shows up mid-task.
-`/launch-check` audits once-per-project standards, and `security-audit` looks for
-vulnerabilities, so they don't replace each other.
-
 ### Design and motion (Emil Kowalski)
 
 | Skill | Use it for |
@@ -64,8 +59,7 @@ vulnerabilities, so they don't replace each other.
 | `gestures`, `apple-design` | Drag, swipe and sheet interactions; spring physics and fluid motion |
 | `break-ui` | Stress-testing UI with worst-case data |
 | `prototype`, `pick-ui-library` | Several variants behind a live picker; choosing a library for a task |
-| `mobile-native`, `animate-expo`, `write-swift` | Web apps that feel native on phones; React Native/Expo motion; Swift |
-| `ask-sonner` | The Sonner toast library |
+| `mobile-native` | Web apps that feel native on phones |
 
 `review-animations`, `prototype` and `pick-ui-library` are slash commands only. Upstream sets
 `disable-model-invocation: true` on them, so Claude never starts them unprompted.
@@ -88,58 +82,13 @@ fetched from their own repos, and starts two MCP servers from `.mcp.json`: **Pla
 `configure-knip`). Sources are in
 [`skills/THIRD_PARTY.md`](skills/THIRD_PARTY.md#pulled-in-by-the-plugin-not-copied).
 
-## Install
-
-As a plugin:
-
-```
-/plugin marketplace add rakuu-exe/claude-workflow
-/plugin install claude-workflow@rakuu-workflow
-```
-
-That one install brings everything: the commands, agents and skills here, impeccable and
-taste-skill, and the Playwright and Knip MCP servers. It needs Node.js on `PATH` (for `npx`)
-and Chrome (for Playwright and taste-skill's checker).
-
-Or by hand, without the dependencies and MCP servers:
-
-```sh
-git clone https://github.com/rakuu-exe/claude-workflow.git ~/claude-workflow
-cp -r ~/claude-workflow/agents ~/claude-workflow/commands ~/claude-workflow/skills ~/.claude/
-```
-
-Restart Claude Code either way, so the commands and skills register.
-
-`claude plugin validate` reports the name `claude-workflow` as reserved, because it starts
-with `claude-`. Installing and loading still work. Renaming the plugin would change the
-install id and the `claude-workflow:` prefix on every skill.
-
-## Where standards live
-
-Web and product standards are placed by **cadence**, never as one checklist injected
-everywhere — a global rulebook contradicts "size the plan to the task" and leaks cookie
-banners into CLI bugfixes.
-
-| Cadence | Handled by |
-|---|---|
-| Once per project | `/scaffold` creates them; `/launch-check` audits them |
-| Per change | The gated surface scan in `reviewer.md`, which fires only on the file kinds the diff touches |
-| Design-time | One principle in `planner.md` — name what crosses a boundary — that no-ops on refactors |
-
-## Worklog
-
-`/master` appends to `.claude/worklog.md` in whatever project it runs in: the approach
-and the rejected alternative, verification numbers, what was left undone, and what risk
-was carried forward. Git records what changed; this records what was decided and what
-was knowingly skipped. That file belongs to the project, not to this repo.
-
 ## What this repo deliberately does not contain
 
-It lives inside `~/.claude`, which also holds credentials, session transcripts, and
-telemetry. `.gitignore` therefore denies everything by default and un-ignores only
-`agents/*.md`, `commands/*.md`, the plugin manifests, `.mcp.json`, and each skill folder by name.
-Skills are listed one by one rather than as `skills/**`, because `~/.claude/skills/synced/`
-holds claude.ai's own synced skills and their manifest. `settings.json` is excluded on
-purpose — its `env` block is a common place for API keys.
+It's built to live inside `~/.claude`, which also holds credentials, session transcripts and
+telemetry. `.gitignore` therefore denies everything by default and un-ignores only the plugin
+manifests, `.mcp.json`, and each skill folder by name. Skills are listed one by one rather
+than as `skills/**`, because `~/.claude/skills/synced/` holds claude.ai's own synced skills
+and their manifest. `settings.json` is excluded on purpose, since its `env` block is a common
+place for API keys.
 
 Before adding a `!` line to `.gitignore`, ask whether that path can ever hold a secret.
