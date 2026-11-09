@@ -12,6 +12,7 @@
 *
 
 !.gitignore
+!.gitattributes
 !README.md
 
 !agents/
@@ -22,3 +23,27 @@
 
 !.claude-plugin/
 !.claude-plugin/*.json
+
+# Skills are un-ignored one by one, never as skills/**: ~/.claude/skills/synced/
+# holds claude.ai's own synced skills and their manifest, which must stay out.
+# Each listed folder is static third-party skill text plus its LICENSE.
+!skills/
+!skills/THIRD_PARTY.md
+!skills/systematic-debugging/
+!skills/systematic-debugging/**
+!skills/security-audit/
+!skills/security-audit/**
+!skills/code-review-and-quality/
+!skills/code-review-and-quality/**
+!skills/code-simplification/
+!skills/code-simplification/**
+!skills/simplify-codebase/
+!skills/simplify-codebase/**
+!skills/configure-knip/
+!skills/configure-knip/**
+!skills/clean-git-repo/
+!skills/clean-git-repo/**
+!skills/api-design-principles/
+!skills/api-design-principles/**
+!skills/architecture-patterns/
+!skills/architecture-patterns/**
