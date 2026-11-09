@@ -1,17 +1,37 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "rakuu-workflow",
-  "description": "Personal Claude Code workflow: a gated multi-agent build pipeline and the web-standards commands around it",
+  "description": "Personal Claude Code workflow: a gated multi-agent build pipeline, the web-standards commands around it, and vetted community skills",
   "owner": {
     "name": "ragnarrand"
   },
   "plugins": [
     {
       "name": "claude-workflow",
-      "description": "A gated Planner -> Implementer/Refactorer -> Tester -> Reviewer pipeline, plus /scaffold, /debug and /launch-check, and vetted community skills for debugging, security, cleanup and backend design",
+      "description": "A gated Planner -> Implementer/Refactorer -> Tester -> Reviewer pipeline, plus /scaffold, /debug and /launch-check, vetted community skills, and Playwright and Knip MCP servers. Installs impeccable and taste-skill with it",
       "category": "workflow",
       "source": "./",
       "version": "1.1.0"
+    },
+    {
+      "name": "impeccable",
+      "description": "Paul Bakaus's design skill: polish, critique and audit frontend UI. Upstream plugin, Apache-2.0",
+      "category": "design",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/pbakaus/impeccable.git",
+        "path": "plugin"
+      }
+    },
+    {
+      "name": "taste-skill",
+      "description": "Leonxlnx's taste-skill: professional company websites and landing pages, checked in a real browser. Upstream, MIT",
+      "category": "design",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Leonxlnx/taste-skill.git"
+      },
+      "skills": ["./skills/taste-skill"]
     }
   ]
 }

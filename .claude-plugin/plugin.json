@@ -1,8 +1,9 @@
 {
   "name": "claude-workflow",
-  "description": "A gated Planner -> Implementer/Refactorer -> Tester -> Reviewer pipeline, commands for scaffolding, root-cause debugging and pre-launch audits, and vetted community skills for debugging, security, cleanup and backend design",
+  "description": "A gated Planner -> Implementer/Refactorer -> Tester -> Reviewer pipeline, commands for scaffolding, root-cause debugging and pre-launch audits, vetted community skills, and Playwright and Knip MCP servers",
   "author": {
     "name": "ragnarrand"
   },
-  "version": "1.1.0"
+  "version": "1.1.0",
+  "dependencies": ["impeccable", "taste-skill"]
 }

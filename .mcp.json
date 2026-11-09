@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@0.0.84"]
+    },
+    "knip": {
+      "command": "npx",
+      "args": ["-y", "@knip/mcp@0.0.37"]
+    }
+  }
+}
