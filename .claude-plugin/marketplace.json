@@ -8,10 +8,10 @@
   "plugins": [
     {
       "name": "claude-workflow",
-      "description": "A gated Planner -> Implementer/Refactorer -> Tester -> Reviewer pipeline, plus /scaffold, /debug and /launch-check",
+      "description": "A gated Planner -> Implementer/Refactorer -> Tester -> Reviewer pipeline, plus /scaffold, /debug and /launch-check, and vetted community skills for debugging, security, cleanup and backend design",
       "category": "workflow",
       "source": "./",
-      "version": "1.0.0"
+      "version": "1.1.0"
     }
   ]
 }
