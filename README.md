@@ -66,6 +66,9 @@ vulnerabilities, so they don't replace each other.
 | `mobile-native`, `animate-expo`, `write-swift` | Web apps that feel native on phones; React Native/Expo motion; Swift |
 | `ask-sonner` | The Sonner toast library |
 
+`review-animations`, `prototype` and `pick-ui-library` are slash commands only. Upstream sets
+`disable-model-invocation: true` on them, so Claude never starts them unprompted.
+
 ### Project state
 
 | Skill | Use it for |
