@@ -65,5 +65,4 @@ Keep entries short. Git history already holds the diff, so describe what now wor
 ## What this doesn't replace
 
 - **Git history** records each change line by line. Don't restate diffs.
-- **`.claude/worklog.md`**, written by `/master`, records the decisions and rejected alternatives for one run. The tracker records items and their state. When a run wrote a worklog entry, link it from the `IMPLEMENTED.md` entry instead of copying it.
 - **A user-facing CHANGELOG** is written for users. The tracker is written for whoever works on the project next.
