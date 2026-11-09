@@ -1,8 +1,8 @@
 {
   "name": "claude-workflow",
-  "description": "A gated Planner -> Implementer/Refactorer -> Tester -> Reviewer pipeline, plus commands for scaffolding a project, debugging by root cause, and auditing it before launch",
+  "description": "A gated Planner -> Implementer/Refactorer -> Tester -> Reviewer pipeline, commands for scaffolding, root-cause debugging and pre-launch audits, and vetted community skills for debugging, security, cleanup and backend design",
   "author": {
     "name": "ragnarrand"
   },
-  "version": "1.0.0"
+  "version": "1.1.0"
 }
