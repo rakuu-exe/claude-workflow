@@ -16,7 +16,7 @@ update will silently overwrite the change.
 | `clean-git-repo` | [webpro/skills](https://github.com/webpro/skills) | `skills/clean-git-repo` | `30e66c946d87` | ISC |
 | `api-design-principles` | [wshobson/agents](https://github.com/wshobson/agents) | `plugins/backend-development/skills/api-design-principles` | `9c61ab243def` | MIT |
 | `architecture-patterns` | [wshobson/agents](https://github.com/wshobson/agents) | `plugins/backend-development/skills/architecture-patterns` | `9c61ab243def` | MIT |
-| 18 design-engineering skills (see the README's Design section) | [emilkowalski/skills](https://github.com/emilkowalski/skills) | `skills/*` | `715c1807e08c` | MIT |
+| 15 design-engineering skills (see the README's Design section) | [emilkowalski/skills](https://github.com/emilkowalski/skills) | `skills/*`, except `write-swift`, `animate-expo` and `ask-sonner` | `715c1807e08c` | MIT |
 
 `project-tracker` is this repo's own skill, not third-party.
 
