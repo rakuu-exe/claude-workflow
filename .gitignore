@@ -13,6 +13,8 @@
 
 !.gitignore
 !.gitattributes
+# Plugin MCP servers: npx commands only. Never put tokens or env values here.
+!.mcp.json
 !README.md
 
 !agents/

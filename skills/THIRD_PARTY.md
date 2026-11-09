@@ -20,15 +20,18 @@ update will silently overwrite the change.
 
 `project-tracker` is this repo's own skill, not third-party.
 
-## Installed separately, not copied
+## Pulled in by the plugin, not copied
 
-These ship hooks, agents, binaries or large assets and update often, so they're installed from their own sources rather than vendored here:
+These ship hooks, agents, binaries or large assets and update often, so the plugin fetches them from their own sources instead of vendoring them:
 
-| What | Install | License |
+| What | How the plugin gets it | License |
 |---|---|---|
-| [impeccable](https://github.com/pbakaus/impeccable) | `claude plugin marketplace add pbakaus/impeccable` then `claude plugin install impeccable@impeccable` | Apache-2.0 |
-| [taste-skill](https://github.com/Leonxlnx/taste-skill) | `claude plugin marketplace add Leonxlnx/taste-skill` then `claude plugin install taste-skill@taste-skill` | MIT |
-| [Playwright MCP](https://github.com/microsoft/playwright-mcp) | `claude mcp add playwright -s user -- cmd /c npx -y @playwright/mcp@0.0.84` (drop `cmd /c` on macOS/Linux) | Apache-2.0 |
+| [impeccable](https://github.com/pbakaus/impeccable) | Dependency, listed in this marketplace as a `git-subdir` source (`plugin/`) | Apache-2.0 |
+| [taste-skill](https://github.com/Leonxlnx/taste-skill) | Dependency, listed in this marketplace as a `url` source | MIT |
+| [Playwright MCP](https://github.com/microsoft/playwright-mcp) | `.mcp.json`, `@playwright/mcp@0.0.84` via npx | Apache-2.0 |
+| [Knip MCP](https://knip.dev) | `.mcp.json`, `@knip/mcp@0.0.37` via npx, for `configure-knip` | ISC |
+
+The dependency sources use full `https://` URLs on purpose. The `owner/repo` shorthand clones over SSH, which fails on a machine with no SSH key for GitHub.
 
 ## Considered and left out
 
