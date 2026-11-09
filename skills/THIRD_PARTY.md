@@ -16,6 +16,19 @@ update will silently overwrite the change.
 | `clean-git-repo` | [webpro/skills](https://github.com/webpro/skills) | `skills/clean-git-repo` | `30e66c946d87` | ISC |
 | `api-design-principles` | [wshobson/agents](https://github.com/wshobson/agents) | `plugins/backend-development/skills/api-design-principles` | `9c61ab243def` | MIT |
 | `architecture-patterns` | [wshobson/agents](https://github.com/wshobson/agents) | `plugins/backend-development/skills/architecture-patterns` | `9c61ab243def` | MIT |
+| 18 design-engineering skills (see the README's Design section) | [emilkowalski/skills](https://github.com/emilkowalski/skills) | `skills/*` | `715c1807e08c` | MIT |
+
+`project-tracker` is this repo's own skill, not third-party.
+
+## Installed separately, not copied
+
+These ship hooks, agents, binaries or large assets and update often, so they're installed from their own sources rather than vendored here:
+
+| What | Install | License |
+|---|---|---|
+| [impeccable](https://github.com/pbakaus/impeccable) | `claude plugin marketplace add pbakaus/impeccable` then `claude plugin install impeccable@impeccable` | Apache-2.0 |
+| [taste-skill](https://github.com/Leonxlnx/taste-skill) | `claude plugin marketplace add Leonxlnx/taste-skill` then `claude plugin install taste-skill@taste-skill` | MIT |
+| [Playwright MCP](https://github.com/microsoft/playwright-mcp) | `claude mcp add playwright -s user -- cmd /c npx -y @playwright/mcp@0.0.84` (drop `cmd /c` on macOS/Linux) | Apache-2.0 |
 
 ## Considered and left out
 
