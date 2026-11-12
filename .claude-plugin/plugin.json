@@ -1,9 +1,19 @@
 {
-  "name": "claude-workflow",
-  "description": "Vetted community skills for debugging, review, security, cleanup, backend design, UI and motion, plus a project-tracker skill and the Playwright and Knip MCP servers",
+  "name": "rakuu",
+  "description": "A lead that talks the work through, plans it and hands it to a team of agents, with this repo's own skills and four MCP servers. Installs the full community plugins the team works with",
   "author": {
     "name": "ragnarrand"
   },
-  "version": "1.2.0",
-  "dependencies": ["impeccable", "taste-skill"]
+  "version": "2.0.0",
+  "dependencies": [
+    "emil",
+    "impeccable",
+    "taste-skill",
+    "superpowers",
+    "agent-skills",
+    "backend-development",
+    "security-audit",
+    "webpro",
+    "simplify-codebase"
+  ]
 }

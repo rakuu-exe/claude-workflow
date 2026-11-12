@@ -13,65 +13,28 @@
 
 !.gitignore
 !.gitattributes
-# Plugin MCP servers: npx commands only. Never put tokens or env values here.
+# Plugin MCP servers: npx commands and public URLs only. Never put tokens or env values here.
 !.mcp.json
 !README.md
 
 !.claude-plugin/
 !.claude-plugin/*.json
 
+# The lead and its team: static instruction text, no secrets.
+!output-styles/
+!output-styles/*.md
+!agents/
+!agents/*.md
+
 # Skills are un-ignored one by one, never as skills/**: ~/.claude/skills/synced/
 # holds claude.ai's own synced skills and their manifest, which must stay out.
-# Each listed folder is static third-party skill text plus its LICENSE.
+# Only this repo's own skills live here. Third-party skills come as full plugins,
+# listed in .claude-plugin/marketplace.json.
 !skills/
 !skills/THIRD_PARTY.md
-!skills/systematic-debugging/
-!skills/systematic-debugging/**
-!skills/security-audit/
-!skills/security-audit/**
-!skills/code-review-and-quality/
-!skills/code-review-and-quality/**
-!skills/code-simplification/
-!skills/code-simplification/**
-!skills/simplify-codebase/
-!skills/simplify-codebase/**
-!skills/configure-knip/
-!skills/configure-knip/**
-!skills/clean-git-repo/
-!skills/clean-git-repo/**
-!skills/api-design-principles/
-!skills/api-design-principles/**
-!skills/architecture-patterns/
-!skills/architecture-patterns/**
 !skills/project-tracker/
 !skills/project-tracker/**
-!skills/animate/
-!skills/animate/**
-!skills/animation-performance/
-!skills/animation-performance/**
-!skills/animation-vocabulary/
-!skills/animation-vocabulary/**
-!skills/apple-design/
-!skills/apple-design/**
-!skills/break-ui/
-!skills/break-ui/**
-!skills/choreograph/
-!skills/choreograph/**
-!skills/emil-design-eng/
-!skills/emil-design-eng/**
-!skills/find-animation-opportunities/
-!skills/find-animation-opportunities/**
-!skills/gestures/
-!skills/gestures/**
-!skills/improve-animations/
-!skills/improve-animations/**
-!skills/mobile-native/
-!skills/mobile-native/**
-!skills/pick-ui-library/
-!skills/pick-ui-library/**
-!skills/prototype/
-!skills/prototype/**
-!skills/remove-animations/
-!skills/remove-animations/**
-!skills/review-animations/
-!skills/review-animations/**
+!skills/design-language/
+!skills/design-language/**
+!skills/code-style/
+!skills/code-style/**

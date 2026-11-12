@@ -1,40 +1,39 @@
-# Third-party skills
+# Third-party plugins
 
-Every skill in this directory is copied unchanged from its upstream repository at the
-commit below. Each skill folder carries its upstream `LICENSE`. To update one, re-copy
-it from upstream and bump the commit here; don't edit the copy in place, or the next
-update will silently overwrite the change.
+Nothing third-party is copied into this repo. Each plugin below is installed whole from its
+own repository, as a dependency of `rakuu`, through an entry in
+[`.claude-plugin/marketplace.json`](../.claude-plugin/marketplace.json). The three skills in
+this directory (`design-language`, `code-style`, `project-tracker`) are this repo's own.
 
-| Skill | Upstream | Path | Commit | License |
-|---|---|---|---|---|
-| `systematic-debugging` | [obra/superpowers](https://github.com/obra/superpowers) | `skills/systematic-debugging` | `22f0b463e7a5` | MIT |
-| `security-audit` | [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill) | `skills/security-audit` | `c1c8a8c14710` | MIT |
-| `code-review-and-quality` | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | `skills/code-review-and-quality` | `301b02b12bff` | MIT |
-| `code-simplification` | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | `skills/code-simplification` | `301b02b12bff` | MIT |
-| `simplify-codebase` | [tt-a1i/simplify-codebase](https://github.com/tt-a1i/simplify-codebase) | `SKILL.md`, `references/`, `visualization/` | `5da55efcb52d` | MIT |
-| `configure-knip` | [webpro/skills](https://github.com/webpro/skills) | `skills/configure-knip` | `30e66c946d87` | ISC |
-| `clean-git-repo` | [webpro/skills](https://github.com/webpro/skills) | `skills/clean-git-repo` | `30e66c946d87` | ISC |
-| `api-design-principles` | [wshobson/agents](https://github.com/wshobson/agents) | `plugins/backend-development/skills/api-design-principles` | `9c61ab243def` | MIT |
-| `architecture-patterns` | [wshobson/agents](https://github.com/wshobson/agents) | `plugins/backend-development/skills/architecture-patterns` | `9c61ab243def` | MIT |
-| 15 design-engineering skills (see the README's Design section) | [emilkowalski/skills](https://github.com/emilkowalski/skills) | `skills/*`, except `write-swift`, `animate-expo` and `ask-sonner` | `715c1807e08c` | MIT |
+| Plugin | Upstream | Pinned commit | License |
+|---|---|---|---|
+| `emil` | [emilkowalski/skills](https://github.com/emilkowalski/skills) | `f7ce8c02d6e3` | MIT |
+| `superpowers` | [obra/superpowers](https://github.com/obra/superpowers) | `22f0b463e7a5` | MIT |
+| `agent-skills` | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | `301b02b12bff` | MIT |
+| `backend-development` | [wshobson/agents](https://github.com/wshobson/agents), `plugins/backend-development` | `9c61ab243def` | MIT |
+| `security-audit` | [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill) | `c1c8a8c14710` | MIT |
+| `webpro` | [webpro/skills](https://github.com/webpro/skills) | `30e66c946d87` | ISC |
+| `simplify-codebase` | [tt-a1i/simplify-codebase](https://github.com/tt-a1i/simplify-codebase) | `5da55efcb52d` | MIT |
+| `impeccable` | [pbakaus/impeccable](https://github.com/pbakaus/impeccable), `plugin/` | not pinned, follows upstream | Apache-2.0 |
+| `taste-skill` | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill) | not pinned, follows upstream | MIT |
 
-`project-tracker` is this repo's own skill, not third-party.
+To update a pinned plugin, read what changed upstream, then replace its `sha` in
+`marketplace.json` with the new full commit hash. Superpowers and impeccable run a hook at
+session start, so their updates deserve a look before the pin moves.
 
-## Pulled in by the plugin, not copied
+The sources use full `https://` URLs on purpose. The `owner/repo` shorthand clones over SSH, which fails on a machine with no SSH key for GitHub.
 
-These ship hooks, agents, binaries or large assets and update often, so the plugin fetches them from their own sources instead of vendoring them:
+## MCP servers
 
-| What | How the plugin gets it | License |
+| Server | How the plugin gets it | License |
 |---|---|---|
-| [impeccable](https://github.com/pbakaus/impeccable) | Dependency, listed in this marketplace as a `git-subdir` source (`plugin/`) | Apache-2.0 |
-| [taste-skill](https://github.com/Leonxlnx/taste-skill) | Dependency, listed in this marketplace as a `url` source | MIT |
 | [Playwright MCP](https://github.com/microsoft/playwright-mcp) | `.mcp.json`, `@playwright/mcp@0.0.84` via npx | Apache-2.0 |
-| [Knip MCP](https://knip.dev) | `.mcp.json`, `@knip/mcp@0.0.37` via npx, for `configure-knip` | ISC |
-
-The dependency sources use full `https://` URLs on purpose. The `owner/repo` shorthand clones over SSH, which fails on a machine with no SSH key for GitHub.
+| [Knip MCP](https://knip.dev) | `.mcp.json`, `@knip/mcp@0.0.37` via npx, for `webpro:configure-knip` | ISC |
+| [Figma MCP](https://mcp.figma.com/mcp) | `.mcp.json`, Figma's remote server; signs in with your Figma account | Figma's terms |
+| [Context7 MCP](https://context7.com) | `.mcp.json`, remote server for current library docs | Context7's terms |
 
 ## Considered and left out
 
 - `netresearch/security-audit-skill` is PHP/TYPO3-focused, and `security-audit` above covers the general case.
-- `code-yeongyu/oh-my-openagent` `remove-deadcode` is hard-wired to that project's own `src/`, Bun and OpenCode-only tools, so it doesn't run in Claude Code. `configure-knip` (by Knip's author) does that job for JS/TS.
-- `garrytan/gstack` is a whole toolkit rather than a skill. It needs Bun, registers hooks, auto-updates every session, and replaces the browser tooling, so it belongs in a separate install, not copied here.
+- `code-yeongyu/oh-my-openagent` `remove-deadcode` is hard-wired to that project's own `src/`, Bun and OpenCode-only tools, so it doesn't run in Claude Code. `webpro:configure-knip` (by Knip's author) does that job for JS/TS.
+- `garrytan/gstack` is a whole toolkit rather than a skill. It needs Bun, registers hooks, auto-updates every session, and replaces the browser tooling, so it belongs in a separate install.

@@ -1,17 +1,27 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "rakuu-workflow",
-  "description": "Personal Claude Code setup: vetted community skills, a project-tracker skill, design plugins and MCP servers",
+  "description": "Personal Claude Code setup: a lead with a team of agents, and the full community plugins they work with",
   "owner": {
     "name": "ragnarrand"
   },
   "plugins": [
     {
-      "name": "claude-workflow",
-      "description": "Vetted community skills for debugging, review, security, cleanup, backend design, UI and motion, plus a project-tracker skill and the Playwright and Knip MCP servers. Installs impeccable and taste-skill with it",
+      "name": "rakuu",
+      "description": "A lead that plans the work and hands it to a team of agents, with this repo's own skills and four MCP servers. Installs every plugin below with it",
       "category": "workflow",
       "source": "./",
-      "version": "1.2.0"
+      "version": "2.0.0"
+    },
+    {
+      "name": "emil",
+      "description": "Emil Kowalski's design engineering skills, the whole set: animation, choreography, gestures, performance, UI polish. Upstream, MIT",
+      "category": "design",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/emilkowalski/skills.git",
+        "sha": "f7ce8c02d6e3c8f0d980a44c57bcc41a40254349"
+      }
     },
     {
       "name": "impeccable",
@@ -32,6 +42,67 @@
         "url": "https://github.com/Leonxlnx/taste-skill.git"
       },
       "skills": ["./skills/taste-skill"]
+    },
+    {
+      "name": "superpowers",
+      "description": "Jesse Vincent's superpowers: debugging, TDD, planning, review and verification skills. Upstream plugin, MIT",
+      "category": "engineering",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/obra/superpowers.git",
+        "sha": "22f0b463e7a5e579904dd6211a520321035526f7"
+      }
+    },
+    {
+      "name": "agent-skills",
+      "description": "Addy Osmani's agent-skills: engineering skills from spec to ship, with review agents. Upstream plugin, MIT",
+      "category": "engineering",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/addyosmani/agent-skills.git",
+        "sha": "301b02b12bff98e4688e6984af6556802322bbde"
+      }
+    },
+    {
+      "name": "backend-development",
+      "description": "Seth Hobson's backend-development plugin: API design, architecture patterns and backend agents. Upstream plugin, MIT",
+      "category": "engineering",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/wshobson/agents.git",
+        "path": "plugins/backend-development",
+        "sha": "9c61ab243def98f72da12abd41cfcf5bcd91af9d"
+      }
+    },
+    {
+      "name": "security-audit",
+      "description": "Cloudflare's security-audit skill: security guidance and full audits. Upstream, MIT",
+      "category": "engineering",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/cloudflare/security-audit-skill.git",
+        "sha": "c1c8a8c1471069fb0e188eeaff69b8e8db6564a8"
+      }
+    },
+    {
+      "name": "webpro",
+      "description": "Lars Kappert's skills: Knip setup, git cleanup, JavaScript optimization, prose and PR review. Upstream, ISC",
+      "category": "engineering",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/webpro/skills.git",
+        "sha": "30e66c946d87731ba1d51a133ac1f3f8c4f957e1"
+      }
+    },
+    {
+      "name": "simplify-codebase",
+      "description": "tt-a1i's simplify-codebase: proving and removing dead code, duplicate state and needless layers. Upstream, MIT",
+      "category": "engineering",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/tt-a1i/simplify-codebase.git",
+        "sha": "5da55efcb52db690e7406f06f827a23b15da2706"
+      }
     }
   ]
 }
