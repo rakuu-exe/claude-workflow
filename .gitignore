@@ -16,25 +16,12 @@
 # Plugin MCP servers: npx commands and public URLs only. Never put tokens or env values here.
 !.mcp.json
 !README.md
+!THIRD_PARTY.md
 
 !.claude-plugin/
 !.claude-plugin/*.json
 
-# The lead and its team: static instruction text, no secrets.
-!output-styles/
-!output-styles/*.md
-!agents/
-!agents/*.md
-
-# Skills are un-ignored one by one, never as skills/**: ~/.claude/skills/synced/
-# holds claude.ai's own synced skills and their manifest, which must stay out.
-# Only this repo's own skills live here. Third-party skills come as full plugins,
+# No skills/ line on purpose: this repo has no skills of its own, and
+# ~/.claude/skills/synced/ holds claude.ai's own synced skills and their
+# manifest, which must stay out. Third-party skills come as full plugins,
 # listed in .claude-plugin/marketplace.json.
-!skills/
-!skills/THIRD_PARTY.md
-!skills/project-tracker/
-!skills/project-tracker/**
-!skills/design-language/
-!skills/design-language/**
-!skills/code-style/
-!skills/code-style/**

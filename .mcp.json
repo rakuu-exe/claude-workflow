@@ -4,17 +4,9 @@
       "command": "npx",
       "args": ["-y", "@playwright/mcp@0.0.84"]
     },
-    "knip": {
-      "command": "npx",
-      "args": ["-y", "@knip/mcp@0.0.37"]
-    },
     "figma": {
       "type": "http",
       "url": "https://mcp.figma.com/mcp"
-    },
-    "context7": {
-      "type": "http",
-      "url": "https://mcp.context7.com/mcp"
     }
   }
 }

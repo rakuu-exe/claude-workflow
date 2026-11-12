@@ -1,19 +1,14 @@
 {
   "name": "rakuu",
-  "description": "A lead that talks the work through, plans it and hands it to a team of agents, with this repo's own skills and four MCP servers. Installs the full community plugins the team works with",
+  "description": "Installs four community plugins in full (emil, impeccable, taste-skill, superpowers) and starts the Playwright and Figma MCP servers",
   "author": {
     "name": "ragnarrand"
   },
-  "version": "2.0.0",
+  "version": "3.0.0",
   "dependencies": [
     "emil",
     "impeccable",
     "taste-skill",
-    "superpowers",
-    "agent-skills",
-    "backend-development",
-    "security-audit",
-    "webpro",
-    "simplify-codebase"
+    "superpowers"
   ]
 }
